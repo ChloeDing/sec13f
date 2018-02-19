@@ -93,7 +93,11 @@ const compareXMLs = (oldXml, newXml) => {
         oldVsNewList[cusip]['New Shares'] = newList[cusip]['Shares'];
         oldVsNewList[cusip]['Old Value'] = oldList[cusip]['Value'];
         oldVsNewList[cusip]['New Value'] = newList[cusip]['Value'];
-        oldVsNewList[cusip]['Share Change'] = ( newList[cusip]['Shares'] - oldList[cusip]['Shares'] ) / oldList[cusip]['Shares'];
+        if (oldList[cusip]['Shares'] === 0 ) {
+          oldVsNewList[cusip]['Share Change'] = 1;
+        } else {
+          oldVsNewList[cusip]['Share Change'] = ( newList[cusip]['Shares'] - oldList[cusip]['Shares'] ) / oldList[cusip]['Shares'];
+        }
         oldVsNewList[cusip]['Note'] = note;
         oldVsNewList[cusip]['CUSIP'] = cusip;
       }
