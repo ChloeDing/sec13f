@@ -54,14 +54,14 @@ const compareXMLs = (oldXml, newXml) => {
         eachRow['Company Name'] = eachRecord.nameOfIssuer[0];
         eachRow['Shares'] = eachRecord.shrsOrPrnAmt[0].sshPrnamt[0];
         eachRow['Value'] = eachRecord.value[0];
-        oldList[eachRecord.cusip[0]] = eachRow;
+        oldList[eachRecord.cusip[0].toUpperCase()] = eachRow;
       });
       recordArrayNew.forEach((eachRecord) => {
         var eachRow = {};
         eachRow['Company Name'] = eachRecord.nameOfIssuer[0];
         eachRow['Shares'] = eachRecord.shrsOrPrnAmt[0].sshPrnamt[0];
         eachRow['Value'] = eachRecord.value[0];
-        newList[eachRecord.cusip[0]] = eachRow;
+        newList[eachRecord.cusip[0].toUpperCase()] = eachRow;
       });
       for (var cusip in oldList) {
         if (newList[cusip] === undefined) {
